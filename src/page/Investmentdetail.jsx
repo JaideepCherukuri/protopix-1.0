@@ -23,7 +23,12 @@ import {
   Bitcoin,
   RefreshCw,
   Fuel,
-  ArrowLeftRight
+  ArrowLeftRight,
+  Globe,
+  Mail,
+  Copy,
+  Lock,
+  ExternalLink
 } from 'lucide-react';
 import { parseUnits } from 'viem';
 import { 
@@ -455,7 +460,7 @@ const handleInvestNow = async () => {
       timeRemaining: 'Estimated: 30s',
       actionButtons: [
         {
-          label: '🔄 Retry',
+          label: '������ Retry',
           onClick: handleApproveAndTransfer,
           variant: 'solid'
         },
@@ -697,7 +702,11 @@ export default function InvestmentDetail() {
     redemption = 'quarterly',
     paymentmethods = 'Stablecoins | Fiat | Crypto',
     assetType = '',
-    capacity = ''
+    capacity = '',
+    totalInvested = '$0',
+    provider = 'Pixx Finance',
+    activestatus = 'Active',
+    expectedReturn = '0%'
   } = location.state || {};
   const [expanded, setExpanded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -1103,206 +1112,608 @@ const calculateExpectedReturn = (amount, tenure) => {
         }}
       />
 
-      {/* Header */}
-      <div className="bg-[rgba(18,24,39)] bg-cover bg-no-repeat p-6 text-white">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex items-center space-x-2 text-sm mb-4">
-            <span className="bg-blue-500 px-2 py-1 rounded">{hashtag}</span>
-            <span className="text-gray-400">•</span>
-            <span className="text-gray-400">Institutional Grade</span>
-            <span className="text-gray-400">•</span>
-            <span className="bg-green-500 px-2 py-1 rounded">Active</span>
+      {/* Hero Section */}
+      <div 
+        className="relative h-[250px] sm:h-[300px] md:h-[400px] bg-cover bg-center"
+        style={{ 
+          backgroundImage: `linear-gradient(rgba(18, 24, 39, 0.8), rgba(18, 24, 39, 0.95)), url(${backgroundImageUrl})`
+        }}
+      >
+        {/* Content Container with better spacing */}
+        <div className="absolute inset-0 flex flex-col justify-between p-4 sm:p-6">
+          {/* Tags at top */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="px-2 py-1 text-xs sm:text-sm bg-white/10 backdrop-blur-sm border border-white/10 rounded-full text-white">
+              {hashtag}
+            </span>
+            <span className="px-2 py-1 text-xs sm:text-sm bg-green-500/10 backdrop-blur-sm border border-green-400/10 rounded-full text-green-400">
+              {activestatus}
+            </span>
+            
           </div>
-          
-          <h1 className="text-xl font-bold mb-6">{title}</h1>
-          
-          <div className="grid grid-cols-3 gap-6">
-            <StatCard 
-              label="Variable APY" 
-              value={floatingapy} 
-              subtext="Bi-annual redemption"
-            />
-            <StatCard 
-              label="Minimum Investment" 
-              value="$1"
-              subtext="Total capacity: $250,000"
-            />
-            <StatCard 
-              label="Lock-in Period" 
-              value="24months"
-              subtext="Bi-annual redemption"
-            />
+
+          {/* Main Content - Pushed to bottom */}
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{title}</h1>
+              <p className="text-sm text-gray-300 max-w-2xl line-clamp-2 sm:line-clamp-none">
+                {description}
+              </p>
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4">
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/5">
+                <div className="flex items-center space-x-2 mb-1">
+                  <TrendingUp className="w-4 h-4 text-green-400" />
+                  <span className="text-xs text-gray-300">Target Annual Return</span>
+                </div>
+                <p className="text-base sm:text-lg font-bold text-white">{floatingapy}</p>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/5">
+                <div className="flex items-center space-x-2 mb-1">
+                  <Clock className="w-4 h-4 text-blue-400" />
+                  <span className="text-xs text-gray-300">Lock-in Period</span>
+                </div>
+                <p className="text-base sm:text-lg font-bold text-white">{lockin}</p>
+              </div>
+
+              <div className="hidden md:block bg-white/5 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/5">
+                <div className="flex items-center space-x-2 mb-1">
+                  <DollarSign className="w-4 h-4 text-orange-400" />
+                  <span className="text-xs text-gray-300">Min. Investment</span>
+                </div>
+                <p className="text-base sm:text-lg font-bold text-white">$1</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Provider Section */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg border border-gray-100 mt-6">
+          {/* Provider Details */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            {/* Logo and Name */}
+            <div className="flex items-center space-x-3 sm:space-x-4">
+              <div className="w-12 sm:w-14 h-12 sm:h-14 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 flex-shrink-0">
+                <Building2 className="w-6 sm:w-7 h-6 sm:h-7 text-[#d71921]" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h2 className="text-base sm:text-lg font-semibold text-gray-900">Pixx Finance</h2>
+                  <BadgeCheck className="w-4 sm:w-5 h-4 sm:h-5 text-blue-500" />
+                  <span className="px-2 py-0.5 text-xs bg-blue-50 text-blue-600 rounded-full">Verified</span>
+                </div>
+                <p className="text-xs sm:text-sm text-gray-600 mt-1">Licensed Investment Manager</p>
+              </div>
+            </div>
+
+            {/* Stats - Scrollable on mobile */}
+            <div className="flex sm:grid sm:grid-cols-3 gap-3 overflow-x-auto sm:overflow-visible pb-2 sm:pb-0 -mx-4 sm:mx-0 px-4 sm:px-0">
+              <div className="bg-gray-50 rounded-lg p-3 min-w-[110px] sm:min-w-0">
+                <p className="text-xs sm:text-sm text-gray-600">AUM</p>
+                <p className="text-base sm:text-lg font-semibold text-gray-900">$250M+</p>
+              </div>
+              <div className="bg-gray-50 rounded-lg p-3 min-w-[110px] sm:min-w-0">
+                <p className="text-xs sm:text-sm text-gray-600">Track Record</p>
+                <p className="text-base sm:text-lg font-semibold text-gray-900">5+ Years</p>
+              </div>
+              <div className="bg-gray-50 rounded-lg p-3 min-w-[110px] sm:min-w-0">
+                <p className="text-xs sm:text-sm text-gray-600">Investors</p>
+                <p className="text-base sm:text-lg font-semibold text-gray-900">10,000+</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-3xl mx-auto px-6 pb-24">
-        {/* Provider Info */}
-        <div className="py-6 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-              <Building2 className="w-6 h-6 text-gray-600" />
+        {/* Investment Progress & Stats - New section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mt-6">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center space-x-3">
+              <TrendingUp className="w-6 h-6 text-[#d71921]" />
+              <h2 className="text-lg md:text-xl font-semibold text-gray-900">Investment Progress</h2>
             </div>
-            <div>
-              <p className="font-semibold">Pixx Finance</p>
-              <p className="text-sm text-gray-600">Investment Provider</p>
+            <div className="flex items-center space-x-2">
+              <span className="px-3 py-1 text-sm bg-green-50 text-green-600 rounded-full">
+                {totalInvested} Raised
+              </span>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <BadgeCheck className="w-5 h-5 text-blue-600" />
-            <span className="text-sm text-gray-600">Verified Provider</span>
+
+          {/* Progress Bar */}
+          <div className="mb-6">
+            <div className="flex justify-between mb-2">
+              <span className="text-sm text-gray-600">Total Capacity</span>
+              <span className="text-sm font-medium text-gray-900">{capacity}</span>
+            </div>
+            <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${(parseInt(totalInvested.replace(/\D/g, '')) / parseInt(capacity.replace(/\D/g, ''))) * 100}%` }}
+                className="absolute h-full bg-[#d71921]"
+              />
+            </div>
           </div>
+
+          {/* Add Investment Stats */}
+          
         </div>
 
-        <DetailSection title="Investment Overview">
+        {/* Investment Overview - New section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mt-6">
+          <div className="flex items-center space-x-3 mb-6">
+            <Building2 className="w-6 h-6 text-[#d71921]" />
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900">Investment Overview</h2>
+          </div>
+
           <div className="prose text-gray-700">
-            <p className="mb-4">
-                {description}
-            </p>
+            <p className="mb-4">{description}</p>
             <div className={`transition-all duration-300 ${expanded ? 'h-auto' : 'h-20 overflow-hidden'}`}>
-              <p className="mb-4">
-                This institutional-grade real estate investment opportunity provides exposure to Dubai's premium property market. The portfolio consists of carefully selected luxury properties in prime locations, managed by experienced real estate professionals.
-              </p>
-              <p>
-                With a focus on both capital appreciation and consistent rental yields, this investment vehicle is structured to provide regular bi-annual returns while benefiting from Dubai's robust real estate market growth.
-              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <TrendingUp className="w-5 h-5 text-[#d71921] mt-1" />
+                    <div>
+                      <h4 className="font-medium text-gray-900">Investment Strategy</h4>
+                      <p className="text-sm text-gray-600">Premium real estate portfolio with focus on capital appreciation and rental yields.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <Building2 className="w-5 h-5 text-[#d71921] mt-1" />
+                    <div>
+                      <h4 className="font-medium text-gray-900">Asset Class</h4>
+                      <p className="text-sm text-gray-600">{assetType} backed by prime Dubai properties.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <Clock className="w-5 h-5 text-[#d71921] mt-1" />
+                    <div>
+                      <h4 className="font-medium text-gray-900">Investment Timeline</h4>
+                      <p className="text-sm text-gray-600">{lockin} lock-in with {redemption} redemption windows.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <BadgeCheck className="w-5 h-5 text-[#d71921] mt-1" />
+                    <div>
+                      <h4 className="font-medium text-gray-900">Regulatory Status</h4>
+                      <p className="text-sm text-gray-600">DFSA regulated investment vehicle.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <button 
               onClick={() => setExpanded(!expanded)}
-              className="flex items-center text-blue-600 space-x-1 mt-2"
+              className="flex items-center text-[#d71921] space-x-1 mt-4 hover:text-[#b5171a] transition-colors"
             >
               <span>{expanded ? 'Show less' : 'Read more'}</span>
               <ChevronDown className={`w-4 h-4 transition-transform ${expanded ? 'rotate-180' : ''}`} />
             </button>
           </div>
-        </DetailSection>
+        </div>
 
-        <DetailSection title="Key Info ">
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <StatCard 
-              label="Total Invested" 
-              value="$5,000"
-              subtext="Minimum investment"
-            />
-            <StatCard 
-              label="Available Capacity" 
-              value="$250,000"
-              subtext="Total pool size"
-            />
-            <StatCard 
-              label="Expected Returns" 
-              value="9% APY"
-              subtext="Bi-annual distribution"
-            />
-            <StatCard 
-              label="Lock-in Period" 
-              value="24 months"
-              subtext="Bi-annual redemption available"
-            />
+        {/* Risk & Compliance - New section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mt-6">
+          <div className="flex items-center space-x-3 mb-6">
+            <Shield className="w-6 h-6 text-[#d71921]" />
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900">Risk & Compliance</h2>
           </div>
-        </DetailSection>
 
-        <DetailSection title="Highlights">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <HighlightCard
-              fullWidth
-              title="Premium Real Estate Portfolio"
-              description="Access institutional-grade properties in Dubai's most sought-after locations. Our portfolio consists of luxury residential and commercial properties selected for their prime positioning and strong rental demand, offering both capital appreciation and stable rental yields."
-            />
-            <HighlightCard
-              title="Professional Management"
-              description="Expert property management team handles tenant selection, maintenance, and optimization of rental yields, ensuring hassle-free ownership and maximum returns."
-            />
-            <HighlightCard
-              title="Flexible Investment"
-              description="Bi-annual redemption windows available after the initial 24-month lock-in period. Invest using either cryptocurrency or traditional fiat currency."
-            />
-            <HighlightCard
-              title="Market Growth Potential"
-              description="Benefit from Dubai's robust real estate market, supported by strong economic fundamentals, growing population, and status as a global business hub."
-            />
-          </div>
-        </DetailSection>
-
-        <DetailSection title="Payment Methods">
-          <div className="grid grid-cols-2 gap-6">
-            <div className="flex items-start space-x-3">
-              <DollarSign className="w-6 h-6 text-blue-600 flex-shrink-0" />
-              <div>
-                <h4 className="font-medium mb-1">Fiat Currency</h4>
-                <p className="text-sm text-gray-600">Bank transfer, Card payments</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-3">
-              <Bitcoin className="w-6 h-6 text-blue-600 flex-shrink-0" />
-              <div>
-                <h4 className="font-medium mb-1">Cryptocurrency</h4>
-                <p className="text-sm text-gray-600">BTC, ETH, USDT, USDC</p>
-              </div>
-            </div>
-          </div>
-        </DetailSection>
-
-        <DetailSection title="Key Features">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex items-start space-x-3">
-              <Shield className="w-6 h-6 text-blue-600 flex-shrink-0" />
-              <div>
-                <h4 className="font-medium mb-1">Institutional Grade</h4>
-                <p className="text-sm text-gray-600">Professional management and security</p>
+            {/* Risk Metrics */}
+            <div className="space-y-4">
+              <div className="bg-gray-50 rounded-xl p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-gray-600">Risk Rating</span>
+                  <span className="px-2 py-1 text-xs bg-blue-50 text-blue-600 rounded-full">
+                    Investment Grade
+                  </span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-2xl font-bold text-gray-900">A+</span>
+                  <span className="text-sm text-gray-500">by Moody's</span>
+                </div>
               </div>
-            </div>
-            <div className="flex items-start space-x-3">
-              <Calendar className="w-6 h-6 text-blue-600 flex-shrink-0" />
-              <div>
-                <h4 className="font-medium mb-1">Bi-annual Redemption</h4>
-                <p className="text-sm text-gray-600">Flexible exit options available</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-3">
-              <Wallet className="w-6 h-6 text-blue-600 flex-shrink-0" />
-              <div>
-                <h4 className="font-medium mb-1">Multiple Payment Options</h4>
-                <p className="text-sm text-gray-600">Choose between crypto and fiat</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-3">
-              <TrendingUp className="w-6 h-6 text-blue-600 flex-shrink-0" />
-              <div>
-                <h4 className="font-medium mb-1">Market Growth</h4>
-                <p className="text-sm text-gray-600">Exposure to Dubai's premium market</p>
-              </div>
-            </div>
-          </div>
-        </DetailSection>
 
-        {/* Documents Section */}
-        <DetailSection title="Documents">
-          <div className="space-y-4">
-            <button className="w-full flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-              <div className="flex items-center space-x-3">
-                <FileText className="w-5 h-5 text-gray-600" />
-                <span>Investment Memorandum</span>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-gray-600">Asset Class</span>
+                  <span className="px-2 py-1 text-xs bg-purple-50 text-purple-600 rounded-full">
+                    {assetType}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-500">Real Estate Backed Security</p>
               </div>
-              <Download className="w-5 h-5 text-gray-600" />
-            </button>
-            <button className="w-full flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-              <div className="flex items-center space-x-3">
-                <FileText className="w-5 h-5 text-gray-600" />
-                <span>Property Portfolio Details</span>
+            </div>
+
+            {/* Compliance Info */}
+            <div className="space-y-4">
+              <div className="bg-gray-50 rounded-xl p-4">
+                <div className="flex items-center space-x-2 mb-3">
+                  <BadgeCheck className="w-5 h-5 text-green-500" />
+                  <span className="text-sm font-medium text-gray-900">Regulatory Compliance</span>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                    <span className="text-sm text-gray-600">DFSA Regulated</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                    <span className="text-sm text-gray-600">KYC/AML Compliant</span>
+                  </li>
+                </ul>
               </div>
-              <Download className="w-5 h-5 text-gray-600" />
-            </button>
-            <button className="w-full flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-              <div className="flex items-center space-x-3">
-                <FileText className="w-5 h-5 text-gray-600" />
-                <span>Terms & Conditions</span>
-              </div>
-              <Download className="w-5 h-5 text-gray-600" />
-            </button>
+            </div>
           </div>
-        </DetailSection>
+        </div>
+
+        {/* Investment Terms - New section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mt-6">
+          <div className="flex items-center space-x-3 mb-6">
+            <FileText className="w-6 h-6 text-[#d71921]" />
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900">Investment Terms</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-gray-50 rounded-xl p-4">
+              <div className="flex items-center space-x-2 mb-2">
+                <Clock className="w-4 h-4 text-gray-600" />
+                <span className="text-sm text-gray-600">Lock-in Period</span>
+              </div>
+              <p className="text-lg font-semibold text-gray-900">{lockin}</p>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-4">
+              <div className="flex items-center space-x-2 mb-2">
+                <RefreshCw className="w-4 h-4 text-gray-600" />
+                <span className="text-sm text-gray-600">Redemption</span>
+              </div>
+              <p className="text-lg font-semibold text-gray-900">{redemption}</p>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-4">
+              <div className="flex items-center space-x-2 mb-2">
+                <DollarSign className="w-4 h-4 text-gray-600" />
+                <span className="text-sm text-gray-600">Payment Methods</span>
+              </div>
+              <p className="text-lg font-semibold text-gray-900">{paymentmethods}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Highlights - New section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mt-6">
+          <div className="flex items-center space-x-3 mb-6">
+            <TrendingUp className="w-6 h-6 text-[#d71921]" />
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900">Investment Highlights</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                icon: <Building2 className="w-8 h-8 text-[#d71921]" />,
+                title: "Premium Real Estate",
+                description: "Access to Dubai's most sought-after properties in prime locations.",
+                stats: `${capacity} Total Pool Size`
+              },
+              {
+                icon: <TrendingUp className="w-8 h-8 text-[#d71921]" />,
+                title: "Attractive Returns",
+                description: "Target annual yield of ${floatingapy} with bi-annual distributions.",
+                stats: "Historical: 12.3% APY"
+              },
+              {
+                icon: <Shield className="w-8 h-8 text-[#d71921]" />,
+                title: "Institutional Grade",
+                description: "Professional management and regulatory compliance.",
+                stats: "A+ Risk Rating"
+              },
+              {
+                icon: <RefreshCw className="w-8 h-8 text-[#d71921]" />,
+                title: "Flexible Investment",
+                description: `${redemption} redemption windows after ${lockin} lock-in period.`,
+                stats: "Bi-annual Liquidity"
+              }
+            ].map((highlight, index) => (
+              <div 
+                key={index}
+                className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="bg-white p-3 rounded-lg shadow-sm">
+                    {highlight.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">{highlight.title}</h3>
+                    <p className="text-sm text-gray-600 mb-3">{highlight.description}</p>
+                    <p className="text-xs font-medium text-[#d71921]">{highlight.stats}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Payment Methods - New section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mt-6">
+          <div className="flex items-center space-x-3 mb-6">
+            <Wallet className="w-6 h-6 text-[#d71921]" />
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900">Payment Methods</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-gray-50 rounded-xl p-6">
+              <div className="flex items-center space-x-4 mb-4">
+                <div className="bg-white p-3 rounded-lg shadow-sm">
+                  <Bitcoin className="w-8 h-8 text-[#d71921]" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Cryptocurrency</h3>
+                  <p className="text-sm text-gray-600">USDT, USDC</p>
+                </div>
+              </div>
+              <ul className="space-y-2">
+                <li className="flex items-center space-x-2 text-sm text-gray-600">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                  <span>Instant processing</span>
+                </li>
+                <li className="flex items-center space-x-2 text-sm text-gray-600">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                  <span>No transaction fees</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-6">
+              <div className="flex items-center space-x-4 mb-4">
+                <div className="bg-white p-3 rounded-lg shadow-sm">
+                  <DollarSign className="w-8 h-8 text-[#d71921]" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Fiat Currency</h3>
+                  <p className="text-sm text-gray-600">Bank Transfer, Cards</p>
+                </div>
+              </div>
+              <ul className="space-y-2">
+                <li className="flex items-center space-x-2 text-sm text-gray-600">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                  <span>Multiple currencies accepted</span>
+                </li>
+                <li className="flex items-center space-x-2 text-sm text-gray-600">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                  <span>Secure payment processing</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Documents - New section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mt-6">
+          <div className="flex items-center space-x-3 mb-6">
+            <FileText className="w-6 h-6 text-[#d71921]" />
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900">Important Documents</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              {
+                icon: <FileText className="w-6 h-6 text-[#d71921]" />,
+                title: "Investment Memorandum",
+                size: "2.4 MB",
+                type: "PDF"
+              },
+              {
+                icon: <Building2 className="w-6 h-6 text-[#d71921]" />,
+                title: "Property Portfolio",
+                size: "3.5 MB",
+                type: "PDF"
+              },
+              {
+                icon: <FileText className="w-6 h-6 text-[#d71921]" />,
+                title: "Terms & Conditions",
+                size: "1.2 MB",
+                type: "PDF"
+              },
+              {
+                icon: <FileText className="w-6 h-6 text-[#d71921]" />,
+                title: "Risk Disclosure",
+                size: "1.8 MB",
+                type: "PDF"
+              }
+            ].map((doc, index) => (
+              <button 
+                key={index}
+                className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all group"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="bg-white p-2 rounded-lg shadow-sm group-hover:shadow-md transition-shadow">
+                    {doc.icon}
+                  </div>
+                  <div className="text-left">
+                    <p className="font-medium text-gray-900">{doc.title}</p>
+                    <p className="text-xs text-gray-500">{doc.size} • {doc.type}</p>
+                  </div>
+                </div>
+                <Download className="w-5 h-5 text-gray-400 group-hover:text-[#d71921] transition-colors" />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Tokenization & Blockchain Details */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mt-6">
+          <div className="flex items-center space-x-3 mb-6">
+            <svg className="w-6 h-6 text-[#d71921]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 10V3L4 14H11V21L20 10H13Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900">Blockchain Details</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Contract Details */}
+            <div className="bg-gray-50 rounded-xl p-4">
+              <h3 className="text-sm font-medium text-gray-900 mb-4">Smart Contract</h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Contract Address</span>
+                  <div className="flex items-center space-x-2">
+                    <code className="text-xs bg-white px-2 py-1 rounded border border-gray-100">0x1234...5678</code>
+                    <button className="p-1 hover:bg-white rounded-lg transition-colors">
+                      <Copy className="w-4 h-4 text-gray-500" />
+                    </button>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Token Standard</span>
+                  <span className="text-sm font-medium text-gray-900">ERC-3643</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Network</span>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
+                    <span className="text-sm font-medium text-gray-900">BNB Chain</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Security Audit */}
+            <div className="bg-gray-50 rounded-xl p-4">
+              <h3 className="text-sm font-medium text-gray-900 mb-4">Security Audit</h3>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3">
+                  <Shield className="w-5 h-5 text-green-500" />
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Audited by CertiK</p>
+                    <p className="text-xs text-gray-500">Security Score: 95/100</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Lock className="w-5 h-5 text-blue-500" />
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Multi-signature Wallet</p>
+                    <p className="text-xs text-gray-500">3/5 Signers Required</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Token Metrics */}
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-gray-50 rounded-xl p-4">
+              <p className="text-sm text-gray-600 mb-1">Total Supply</p>
+              <p className="text-lg font-semibold text-gray-900">1,000,000 REALT</p>
+              <p className="text-xs text-gray-500">Fixed Supply</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-4">
+              <p className="text-sm text-gray-600 mb-1">Token Price</p>
+              <p className="text-lg font-semibold text-gray-900">$1.00 USDT</p>
+              <p className="text-xs text-gray-500">Pegged to USD</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-4">
+              <p className="text-sm text-gray-600 mb-1">Market Cap</p>
+              <p className="text-lg font-semibold text-gray-900">$1,000,000</p>
+              <p className="text-xs text-gray-500">Fully Diluted</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-4">
+              <p className="text-sm text-gray-600 mb-1">Holders</p>
+              <p className="text-lg font-semibold text-gray-900">250+</p>
+              <p className="text-xs text-gray-500">Verified Investors</p>
+            </div>
+          </div>
+
+          {/* Audit Trail */}
+          <div className="mt-6">
+            <h3 className="text-sm font-medium text-gray-900 mb-4">Contract Audit Trail</h3>
+            <div className="space-y-3">
+              {[
+                {
+                  event: 'Contract Deployment',
+                  date: '2024-01-15',
+                  hash: '0xabc...def',
+                  status: 'Verified'
+                },
+                {
+                  event: 'CertiK Audit Complete',
+                  date: '2024-01-20',
+                  hash: '0xghi...jkl',
+                  status: 'Passed'
+                },
+                {
+                  event: 'Token Distribution',
+                  date: '2024-02-01',
+                  hash: '0xmno...pqr',
+                  status: 'Active'
+                }
+              ].map((item, index) => (
+                <div key={index} className="flex items-center justify-between bg-gray-50 rounded-xl p-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">{item.event}</p>
+                      <p className="text-xs text-gray-500">{item.date}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <code className="text-xs bg-white px-2 py-1 rounded border border-gray-100">{item.hash}</code>
+                    <a 
+                      href={`https://bscscan.com/tx/${item.hash}`} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="p-1 hover:bg-white rounded-lg transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4 text-gray-500" />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Real Estate Asset Details */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mt-6">
+          <div className="flex items-center space-x-3 mb-6">
+            <Building2 className="w-6 h-6 text-[#d71921]" />
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900">Asset Details</h2>
+          </div>
+
+          {/* Property Gallery */}
+          <div className="relative mb-6">
+            {/* Add image gallery component here */}
+          </div>
+
+          {/* Property Details Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-gray-50 rounded-xl p-4">
+              <p className="text-sm text-gray-600 mb-1">Location</p>
+              <p className="text-base font-semibold text-gray-900">Dubai Marina</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-4">
+              <p className="text-sm text-gray-600 mb-1">Property Type</p>
+              <p className="text-base font-semibold text-gray-900">Commercial</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-4">
+              <p className="text-sm text-gray-600 mb-1">Total Area</p>
+              <p className="text-base font-semibold text-gray-900">10,000 sq.ft</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-4">
+              <p className="text-sm text-gray-600 mb-1">Occupancy Rate</p>
+              <p className="text-base font-semibold text-gray-900">95%</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Fixed Bottom CTA */}

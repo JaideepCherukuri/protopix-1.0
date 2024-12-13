@@ -53,7 +53,7 @@ const getCategoryGradient = (category) => {
     case 'secure yield':
       return 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(21, 128, 61, 0.9))';
     default:
-      return 'linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9))';
+      return 'linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(4, 39, 112, 0.9))';
   }
 };
 
