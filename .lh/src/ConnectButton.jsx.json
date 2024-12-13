@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/ConnectButton.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1734084979589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1734084979589,
+            "name": "Commit-0",
+            "content": "// src/ConnectButton.jsx\nimport React from \"react\";\nimport { useAppKit, useAppKitAccount } from \"@reown/appkit/react\";\n\nexport default function ConnectButton() {\n  const { open } = useAppKit();\n  const { isConnected, address } = useAppKitAccount();\n\n  return (\n    <appkit-button \n      label={isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : \"Get Started\"}\n      size=\"md\"\n      onClick={() => open({ view: isConnected ? 'Account' : 'Connect' })}\n    ></appkit-button>\n  );\n}"
+        }
+    ]
+}

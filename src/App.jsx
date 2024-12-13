@@ -1,6 +1,7 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { AppKitProvider } from './AppKitProvider';
 import Page from './page';
 import Loader from './components/Loader';
 
@@ -25,7 +26,9 @@ export default function App() {
   }
 
   return (
-    <>
+    
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <AppKitProvider>
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -58,6 +61,8 @@ export default function App() {
         }}
       />
       <Page />
-    </>
+      </AppKitProvider>
+      </ErrorBoundary>
+    
   );
 }

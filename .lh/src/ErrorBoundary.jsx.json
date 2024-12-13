@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/ErrorBoundary.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1734085351896,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1734085351896,
+            "name": "Commit-0",
+            "content": "import React from 'react';\r\n\r\nclass ErrorBoundary extends React.Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = { hasError: false, error: null };\r\n  }\r\n\r\n  static getDerivedStateFromError(error) {\r\n    return { hasError: true, error };\r\n  }\r\n\r\n  componentDidCatch(error, errorInfo) {\r\n    console.error('Error caught by boundary:', error, errorInfo);\r\n  }\r\n\r\n  render() {\r\n    if (this.state.hasError) {\r\n      return this.props.FallbackComponent({ \r\n        error: this.state.error,\r\n        resetErrorBoundary: () => this.setState({ hasError: false, error: null })\r\n      });\r\n    }\r\n\r\n    return this.props.children;\r\n  }\r\n}\r\n\r\nexport default ErrorBoundary; "
+        }
+    ]
+}
