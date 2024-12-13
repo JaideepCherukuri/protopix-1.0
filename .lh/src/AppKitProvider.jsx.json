@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/AppKitProvider.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1733941457636,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1733941457636,
+            "name": "Commit-0",
+            "content": "'use client';\r\nimport React from 'react';\r\nimport { createAppKit } from '@reown/appkit/react';\r\nimport { WagmiProvider } from 'wagmi';\r\nimport { WagmiAdapter } from '@reown/appkit-adapter-wagmi';\r\nimport { QueryClient, QueryClientProvider } from '@tanstack/react-query';\r\nimport { bsc, bscTestnet } from '@reown/appkit/networks';\r\n\r\n// Set up QueryClient\r\nconst queryClient = new QueryClient();\r\n\r\n// Use your Reown project ID\r\nconst projectId = '2d7e209a463989cf14adddfe39848648';\r\n\r\n// Create metadata object\r\nconst metadata = {\r\n  name: 'Pixx-Prototype',\r\n  description: 'Global Alternate Investments Hub',\r\n  url: 'https://pixxproto.netlify.app/',\r\n  icons: ['https://imgur.com/VLyVGwF.png'],\r\n};\r\n\r\n// Set the networks\r\nexport const networks = [bsc, bscTestnet];\r\nexport const defaultNetwork = bsc;\r\n\r\n// Create Wagmi Adapter\r\nconst wagmiAdapter = new WagmiAdapter({\r\n  networks,\r\n  projectId,\r\n  ssr: true,\r\n});\r\n\r\n// Initialize AppKit\r\ncreateAppKit({\r\n  adapters: [wagmiAdapter],\r\n  networks,\r\n  projectId,\r\n  metadata,\r\n  allWallets: 'SHOW',\r\n  features: {\r\n    analytics: true,\r\n    socials: ['google', 'twitter', 'telegram']\r\n  },\r\n  themeVariables: {\r\n    '--w3m-accent': '#d71921',\r\n  },\r\n  featuredWalletIds: [\r\n    '8a0ee50d1f22f6651afcae7eb4253e52a3310b90af5daef78a8c4929a9bb99d4',\r\n    '4622a2b2d6af1c9844944291e5e7351a6aa24cd7b23099efac1b2fd875da31a0',\r\n    '38f5d18bd8522c244bdd70cb4a68e0e718865155811c043f052fb9f1c51de662',\r\n  ]\r\n});\r\n\r\nexport function AppKitProvider({ children }) {\r\n  return (\r\n    <WagmiProvider config={wagmiAdapter.wagmiConfig}>\r\n      <QueryClientProvider client={queryClient}>\r\n        {children}\r\n      </QueryClientProvider>\r\n    </WagmiProvider>\r\n  );\r\n}"
+        }
+    ]
+}

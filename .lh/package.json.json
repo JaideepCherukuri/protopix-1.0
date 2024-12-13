@@ -1,0 +1,18 @@
+{
+    "sourceFile": "package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1733948267270,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1733948267270,
+            "name": "Commit-0",
+            "content": "{\r\n  \"name\": \"codia-react\",\r\n  \"version\": \"1.0.0\",\r\n  \"private\": true,\r\n  \"scripts\": {\r\n    \"dev\": \"vite\",\r\n    \"build\": \"vite build\",\r\n    \"preview\": \"vite preview\"\r\n  },\r\n  \"dependencies\": {\r\n    \"@reown/appkit\": \"^1.5.2\",\r\n    \"@reown/appkit-adapter-wagmi\": \"^1.5.2\",\r\n    \"@tanstack/react-query\": \"^5.61.5\",\r\n    \"axios\": \"^1.7.8\",\r\n    \"chart.js\": \"^4.4.7\",\r\n    \"ethers\": \"^5.7.2\",\r\n    \"lucide-react\": \"^0.462.0\",\r\n    \"react\": \"^18.2.0\",\r\n    \"react-chartjs-2\": \"^5.2.0\",\r\n    \"react-dom\": \"^18.2.0\",\r\n    \"react-hot-toast\": \"^2.4.1\",\r\n    \"react-router-dom\": \"^7.0.1\",\r\n    \"react-slider\": \"^2.0.6\",\r\n    \"viem\": \"^2.21.51\",\r\n    \"wagmi\": \"^2.13.2\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@tailwindcss/typography\": \"^0.5.10\",\r\n    \"@vitejs/plugin-react\": \"^4.0.4\",\r\n    \"autoprefixer\": \"^10.4.16\",\r\n    \"postcss\": \"^8.4.31\",\r\n    \"tailwindcss\": \"^3.3.4\",\r\n    \"typescript\": \"^5.1.3\",\r\n    \"vite\": \"^4.3.9\"\r\n  }\r\n}\r\n"
+        }
+    ]
+}

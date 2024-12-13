@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/page/index.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1734082986743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1734082986743,
+            "name": "Commit-0",
+            "content": "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n:root {\n  --default-font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto,\n    Ubuntu, \"Helvetica Neue\", Helvetica, Arial, \"PingFang SC\",\n    \"Hiragino Sans GB\", \"Microsoft Yahei UI\", \"Microsoft Yahei\",\n    \"Source Han Sans CN\", sans-serif;\n}\n\n.main-container {\n  \n  overflow: hidden;\n  \n}\n\n.main-container,\n.main-container * {\n  box-sizing: border-box;\n}\n\ninput,\nselect,\ntextarea,\nbutton {\n  outline: 0;\n}\n\n.glassmorphism {\n  background: rgba(255, 255, 255, 0.2);\n  border-radius: 16px;\n  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);\n  backdrop-filter: blur(10px);\n  -webkit-backdrop-filter: blur(5px);\n  border: 1px solid rgba(255, 255, 255, 0.3);\n}\n\n@media (max-width: 768px) {\n  .main-container {\n    width: 100%;\n    padding: 0 0px;\n  }\n\n  .glassmorphism {\n    width: 100%;\n    max-width: 100%;\n    padding: 16px;\n  }\n\n  .background-image-layer {\n    background-size: cover;\n  }\n}\n\nbody {\n  font-family: var(--default-font-family);\n  margin: 0;\n  padding: 0;\n}\n\n/* src/index.css */\n.fixed {\n  position: fixed;\n}\n\n.absolute {\n  position: absolute;\n}\n\n.flex {\n  display: flex;\n}\n\n.flex-col {\n  flex-direction: column;\n}\n\n.justify-center {\n  justify-content: center;\n}\n\n.items-center {\n  align-items: center;\n}\n\n.space-y-1 > :not(:last-child) {\n  margin-bottom: 0.25rem;\n}\n\n.px-4 {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}\n\n.left-4 {\n  left: 1rem;\n}\n\n.right-4 {\n  right: 1rem;\n}\n\n.read-more-icon {\n  transition: transform 0.3s;\n}\n\n.read-more-icon:hover {\n  transform: scale(1.05);\n}\n\n.cards-container {\n  height: calc(100% - 140px); /* Adjust based on header and footer height */\n  overflow-y: auto; /* Allow scrolling if content overflows */\n  padding: 16px;\n  display: flex;\n  flex-wrap: wrap;\n  gap: 16px; /* Space between cards */\n}\n\n.left-container,\n.right-container {\n  width: 48%;\n  display: flex;\n  flex-direction: column;\n  gap: 16px; /* Space between cards in each column */\n}\n\n.scrollbar-hide {\n  -ms-overflow-style: none;  /* Internet Explorer 10+ */\n  scrollbar-width: none;  /* Firefox */\n}\n\n.scrollbar-hide::-webkit-scrollbar {\n  display: none;  /* Safari and Chrome */\n}\n\n/* Optional: Add a hover effect for card containers */\n.card {\n  transition: box-shadow 0.3s;\n}\n\n.card:hover {\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);\n}\n\n/* src/index.css */\n.loader {\n  border: 8px solid rgba(0, 0, 0, 0.1);\n  width: 64px;\n  height: 64px;\n  border-radius: 50%;\n  border-left-color: #09f;\n  animation: spin 1s ease infinite;\n}\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n/* Add mobile scaling */\n@media screen and (max-width: 768px) {\n  #root {\n    transform: scale(0.85);\n    transform-origin: top center;\n  }\n}\n/* Prevent iOS rubber-band effect */\nhtml, body {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  -webkit-overflow-scrolling: touch;\n  overscroll-behavior-y: none;\n} "
+        }
+    ]
+}
