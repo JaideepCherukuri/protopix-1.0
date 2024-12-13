@@ -27,7 +27,7 @@ export default function App() {
 
   return (
     
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      
       <AppKitProvider>
       <Toaster
         position="top-center"
@@ -62,7 +62,7 @@ export default function App() {
       />
       <Page />
       </AppKitProvider>
-      </ErrorBoundary>
+     
     
   );
 }

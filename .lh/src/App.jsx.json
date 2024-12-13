@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1733942375659,
@@ -28,6 +28,10 @@
                 {
                     "date": 1734085527002,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,8 @@\n   }\n \n   return (\n     \n-    \n       <ErrorBoundary FallbackComponent={ErrorFallback}>\n       <AppKitProvider>\n       <Toaster\n         position=\"top-center\"\n"
+                },
+                {
+                    "date": 1734085820144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n   }\n \n   return (\n     \n-      <ErrorBoundary FallbackComponent={ErrorFallback}>\n+      \n       <AppKitProvider>\n       <Toaster\n         position=\"top-center\"\n         reverseOrder={false}\n@@ -61,8 +61,8 @@\n         }}\n       />\n       <Page />\n       </AppKitProvider>\n-      </ErrorBoundary>\n+     \n     \n   );\n }\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1733942375659,
